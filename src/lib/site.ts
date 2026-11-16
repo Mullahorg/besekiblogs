@@ -1,32 +1,29 @@
 export const SITE = {
-  name: "Hustler Journal",
-  tagline: "The official publication of HustlerLink",
+  name: "BESEKI Journal",
+  tagline: "The automotive journal from BESEKI COMPANY LIMITED",
   description:
-    "Practical guides, success stories, and product updates from HustlerLink, built for Africa's informal economy.",
-  platformUrl: "https://hustlerlink.com",
-  statusUrl: "https://status.hustlerlink.com",
+    "Straightforward car-buying advice, vehicle guides and ownership tips from BESEKI COMPANY LIMITED in Mombasa, Kenya.",
+  platformUrl: "https://beseki.com",
+  statusUrl: "https://beseki.com",
 } as const;
 
 export type NavItem = { label: string; to: string; external?: boolean };
 
 export const primaryNav: NavItem[] = [
-  { label: "Stories", to: "/stories" },
-  { label: "Guides", to: "/guides" },
-  { label: "Safety & Escrow", to: "/safety" },
-  { label: "Updates", to: "/updates" },
+  { label: "Car buying", to: "/guides" },
+  { label: "Vehicle guides", to: "/stories" },
+  { label: "Maintenance", to: "/safety" },
   { label: "News", to: "/news" },
-  { label: "Help Center", to: "/help" },
-  { label: "Developers", to: "/developers" },
+  { label: "About", to: "/about" },
 ];
 
 export const ecosystemNav: NavItem[] = [
-  { label: "HustlerLink Platform", to: "https://hustlerlink.com", external: true },
-  { label: "Jobs", to: "https://hustlerlink.com/jobs", external: true },
-  { label: "Marketplace", to: "https://hustlerlink.com/marketplace", external: true },
-  { label: "Worker Directory", to: "https://hustlerlink.com/workers", external: true },
-  { label: "Business Directory", to: "https://hustlerlink.com/businesses", external: true },
-  { label: "Verification", to: "https://hustlerlink.com/verify", external: true },
-  { label: "Status Page", to: "https://status.hustlerlink.com", external: true },
+  { label: "Browse vehicles", to: "https://beseki.com/inventory", external: true },
+  { label: "Financing", to: "https://beseki.com/financing", external: true },
+  { label: "Trade in your car", to: "https://beseki.com/trade-in", external: true },
+  { label: "Our services", to: "https://beseki.com/services", external: true },
+  { label: "Visit the showroom", to: "https://beseki.com/contact", external: true },
+  { label: "BESEKI home", to: "https://beseki.com", external: true },
 ];
 
 export type CategoryMeta = {
@@ -36,46 +33,46 @@ export type CategoryMeta = {
   description: string;
 };
 
-/* The fixed content pillars from the spec, with their public routes. */
+/* Editorial topics mapped onto the site's established public sections. */
 export const categories: CategoryMeta[] = [
   {
     slug: "success-stories",
-    name: "Success Stories",
+    name: "Car Buying Tips",
     route: "/stories",
     description:
-      "Real hustles from across Kenya. Workers and small businesses share what changed for them.",
+      "Practical checklists for comparing cars, inspecting condition, and buying with confidence.",
   },
   {
     slug: "safety-escrow",
-    name: "Safety and Escrow",
+    name: "Vehicle Guides",
     route: "/safety",
     description:
-      "How escrow works, what to check before you pay, and how to stay safe on every job.",
+      "Clear explanations of vehicle types, engines, features, and what works on Kenyan roads.",
   },
   {
     slug: "skills-business-tips",
-    name: "Skills and Business Tips",
+    name: "Car Ownership",
     route: "/guides",
     description:
-      "Pricing, registering a business, writing job posts, and running a tighter operation.",
+      "Helpful guidance on financing, running costs, paperwork, and getting the most from your car.",
   },
   {
     slug: "product-updates",
-    name: "Product Updates",
+    name: "Maintenance",
     route: "/updates",
-    description: "What shipped on HustlerLink, and what it changes for you.",
+    description: "Simple maintenance advice to keep your car reliable in Kenya's coastal climate.",
   },
   {
     slug: "community-news",
-    name: "Community News",
+    name: "BESEKI News",
     route: "/news",
-    description: "Meetups, partnerships, and news from the HustlerLink community.",
+    description: "New arrivals, showroom news, and updates from BESEKI COMPANY LIMITED.",
   },
   {
     slug: "help-center",
-    name: "Help Center",
+    name: "Buying FAQs",
     route: "/help",
-    description: "Step by step answers for buyers, workers, and businesses.",
+    description: "Straight answers to common questions about buying and owning a car.",
   },
   {
     slug: "developer-documentation",

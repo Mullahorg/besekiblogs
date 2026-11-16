@@ -1,281 +1,193 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, ShieldCheck, Radio } from "lucide-react";
-import {
-  listPublishedPosts,
-  getTrendingPosts,
-  getLatestUpdates,
-} from "@/lib/server/content.functions";
-import { ArticleCardTyped, PostMeta } from "@/components/content/article-card";
-import { SectionHeading, EmptyState, CardGridSkeleton } from "@/components/content/section";
-import { NewsletterForm } from "@/components/newsletter/newsletter-form";
+import { createFileRoute } from "@tanstack/react-router";
+import { ArrowDownRight, ArrowRight, BookOpen, MapPin, MoveUpRight } from "lucide-react";
 import { categories } from "@/lib/site";
-import type { PostCardDTO } from "@/lib/types";
 
-type HomeData = {
-  hero: PostCardDTO | null;
-  trending: PostCardDTO[];
-  latest: PostCardDTO[];
-  picks: PostCardDTO[];
-  updates: PostCardDTO[];
-};
+const featuredReads = [
+  {
+    category: "Car buying tips",
+    title: "What to check before buying a locally used car",
+    excerpt:
+      "A practical checklist for the forecourt — from logbook details to the things worth listening for on a test drive.",
+    date: "18 June 2026",
+    href: "https://beseki.com/blog/what-to-check-before-buying-a-locally-used-car",
+    number: "01",
+  },
+  {
+    category: "Vehicle guides",
+    title: "Petrol, diesel or hybrid: what makes sense on Kenyan roads",
+    excerpt:
+      "Fuel type affects running costs more than most buyers expect. Compare the options for everyday Kenyan driving.",
+    date: "30 May 2026",
+    href: "https://beseki.com/blog/petrol-diesel-or-hybrid-for-kenyan-roads",
+    number: "02",
+  },
+  {
+    category: "Maintenance",
+    title: "Keeping your car healthy in coastal humidity",
+    excerpt:
+      "A few simple habits can help protect your car from the salt air and humidity around Mombasa.",
+    date: "12 May 2026",
+    href: "https://beseki.com/blog/keeping-your-car-healthy-in-coastal-humidity",
+    number: "03",
+  },
+];
+
+const heroImage =
+  "/__l5e/assets-v1/1348cb8e-1d33-4c56-be14-43ed22ab6ebc/beseki-alphand-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Hustler Journal: Practical guides and stories from HustlerLink" },
+      { title: "The BESEKI Journal | Car Buying Advice from Mombasa" },
       {
         name: "description",
         content:
-          "Success stories, safety guides, skills, and product updates for Africa's informal economy. The official publication of HustlerLink.",
+          "Straightforward car-buying advice, vehicle guides and ownership tips from BESEKI COMPANY LIMITED in Mombasa, Kenya.",
       },
-      { property: "og:title", content: "Hustler Journal: Practical guides and stories from HustlerLink" },
+      { property: "og:title", content: "The BESEKI Journal | Car Buying Advice from Mombasa" },
       {
         property: "og:description",
         content:
-          "Success stories, safety guides, skills, and product updates for Africa's informal economy.",
+          "Practical car-buying advice, vehicle guides and ownership tips from the BESEKI team in Mombasa.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  loader: async (): Promise<HomeData> => {
-    const [featuredRes, trending, latest, picks, updates] = await Promise.all([
-      listPublishedPosts({ data: { featured: true, limit: 1 } }),
-      getTrendingPosts({ data: { limit: 4 } }),
-      listPublishedPosts({ data: { limit: 12 } }),
-      listPublishedPosts({ data: { editorsPick: true, limit: 3 } }),
-      getLatestUpdates({ data: { limit: 3 } }),
-    ]);
-    const hero = featuredRes.find(Boolean) ?? latest[0] ?? null;
-    return {
-      hero,
-      trending: trending.filter((p) => p.slug !== hero?.slug).slice(0, 4),
-      latest: latest.filter((p) => p.slug !== hero?.slug).slice(0, 9),
-      picks: picks.filter((p) => p.slug !== hero?.slug).slice(0, 3),
-      updates,
-    };
-  },
   component: HomePage,
-  errorComponent: ({ error, reset }) => <LoadError error={error} reset={reset} />,
-  pendingComponent: () => (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <CardGridSkeleton count={6} />
-    </div>
-  ),
 });
 
-function LoadError({ error, reset }: { error: unknown; reset: () => void }) {
-  return (
-    <div className="mx-auto max-w-xl px-4 py-24 text-center">
-      <h1 className="text-xl font-bold">The Journal did not load</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        {error instanceof Error ? error.message : "Something went wrong."}
-      </p>
-      <button
-        onClick={reset}
-        className="mt-6 inline-flex h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
-      >
-        Try again
-      </button>
-    </div>
-  );
-}
-
-const RAIL = [
-  { label: "All stories", to: "/stories" },
-  { label: "Safety and escrow", to: "/safety" },
-  { label: "Skills and business", to: "/guides" },
-  { label: "Product updates", to: "/updates" },
-  { label: "Spotlights", to: "/stories" },
-  { label: "Help Center", to: "/help" },
-];
-
 function HomePage() {
-  const data = Route.useLoaderData();
-  const { hero, trending, latest, picks, updates } = data;
-
   return (
     <div>
-      {/* Category rail */}
-      <div className="border-b border-border bg-card">
-        <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3" role="navigation" aria-label="Sections">
-          {RAIL.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className="shrink-0 rounded-full border border-border bg-background px-4 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-accent-soft"
-            >
-              {item.label}
-            </Link>
-          ))}
+      <div className="border-b border-border bg-muted/50">
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2 text-xs font-semibold uppercase text-muted-foreground">
+          <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden />
+          Mombasa, Kenya
+          <span className="ml-1 font-normal normal-case">— notes from the BESEKI showroom</span>
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 py-10">
-        {/* Hero */}
-        {hero ? (
-          <section aria-label="Featured story">
-            <div className="grid items-center gap-8 rounded-3xl border border-border bg-card p-6 shadow-card md:grid-cols-2 md:p-10">
-              <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-                  <Sparkles className="h-3.5 w-3.5" aria-hidden />
-                  Featured story
-                </span>
-                <h1 className="mt-4 text-4xl font-extrabold tracking-tight leading-tight md:text-5xl">
-                  <Link to="/stories/$slug" params={{ slug: hero.slug }} className="hover:underline underline-offset-4">
-                    {hero.title}
-                  </Link>
-                </h1>
-                {hero.excerpt && (
-                  <p className="mt-4 max-w-[42ch] text-lg leading-relaxed text-muted-foreground">{hero.excerpt}</p>
-                )}
-                <PostMeta post={hero} className="mt-4" />
-                <Link
-                  to="/stories/$slug"
-                  params={{ slug: hero.slug }}
-                  className="mt-6 inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:bg-primary/90"
-                >
-                  Read the story
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
-              </div>
-              {hero.coverImageUrl && (
-                <img
-                  src={hero.coverImageUrl}
-                  alt={hero.coverImageAlt ?? hero.title}
-                  className="aspect-[4/3] w-full rounded-2xl border border-border object-cover"
-                />
-              )}
-            </div>
-          </section>
-        ) : (
-          <EmptyState
-            title="The Journal is warming up"
-            body="No stories have been published yet. Check back shortly."
-          />
-        )}
-
-        {/* Trending */}
-        {trending.length > 0 && (
-          <section className="mt-14" aria-labelledby="trending-heading">
-            <SectionHeading
-              eyebrow="Trending"
-              title="What readers are reading"
-              action={{ label: "All stories", to: "/stories" }}
-            />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {trending.map((p) => (
-                <ArticleCardTyped key={p.id} post={p} size="sm" />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Latest grid */}
-        <section className="mt-14" aria-labelledby="latest-heading">
-          <SectionHeading eyebrow="Latest" title="Fresh from the newsroom" action={{ label: "Browse all", to: "/stories" }} />
-          {latest.length === 0 ? (
-            <EmptyState title="Nothing here yet" body="Articles will appear as the newsroom publishes them." />
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {latest.map((p) => (
-                <ArticleCardTyped key={p.id} post={p} />
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* Editors picks */}
-        {picks.length > 0 && (
-          <section className="mt-14" aria-labelledby="picks-heading">
-            <SectionHeading eyebrow="Editors' picks" title="Handpicked by the newsroom" />
-            <div className="grid gap-6 md:grid-cols-3">
-              {picks.map((p) => (
-                <div key={p.id} className="relative">
-                  <span className="absolute -top-2.5 left-4 z-10 inline-flex items-center rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-accent-foreground">
-                    Pick
-                  </span>
-                  <ArticleCardTyped post={p} />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Community spotlight */}
-        <section className="mt-14" aria-labelledby="spotlight-heading">
-          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border-2 border-primary/20 bg-primary-soft p-6 md:flex-row md:items-center md:p-10">
-            <div>
-              <p className="eyebrow">Community spotlight</p>
-              <h2 id="spotlight-heading" className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">
-                Real hustles, told by the people living them
-              </h2>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                Every spotlight is reported and confirmed before publication. If your work changed
-                after joining HustlerLink, we want to hear it.
-              </p>
-            </div>
-            <Link
-              to="/stories"
-              className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:bg-primary/90"
-            >
-              Read the spotlights
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </div>
-        </section>
-
-        {/* Product updates strip */}
-        {updates.length > 0 && (
-          <section className="mt-14" aria-labelledby="updates-heading">
-            <SectionHeading
-              eyebrow="Product updates"
-              title="What shipped this month"
-              action={{ label: "All updates", to: "/updates" }}
-            />
-            <div className="grid gap-6 md:grid-cols-3">
-              {updates.map((p) => (
-                <ArticleCardTyped key={p.id} post={p} size="sm" />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Pillars */}
-        <section className="mt-14" aria-labelledby="pillars-heading">
-          <SectionHeading eyebrow="Sections" title="Everything the Journal covers" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {categories.slice(0, 6).map((c) => (
-              <Link
-                key={c.slug}
-                to={c.route}
-                className="rounded-2xl border border-border bg-card p-5 card-interactive"
+      <section className="relative isolate min-h-[430px] overflow-hidden bg-foreground md:min-h-[510px]" aria-labelledby="home-title">
+        <img
+          src={heroImage}
+          alt="A clean white Toyota Alphard available through BESEKI in Mombasa"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/55 to-foreground/5" />
+        <div className="relative mx-auto flex min-h-[430px] max-w-6xl items-center px-5 py-12 md:min-h-[510px] md:px-10">
+          <div className="max-w-xl text-background">
+            <p className="flex items-center gap-3 text-xs font-bold uppercase text-background/85">
+              <span className="h-px w-9 bg-primary" /> BESEKI COMPANY LIMITED · THE JOURNAL
+            </p>
+            <h1 id="home-title" className="beseki-display mt-5 text-5xl font-bold leading-[0.98] md:text-7xl">
+              The right car starts with a <span className="text-primary-foreground">good question.</span>
+            </h1>
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-background/90 md:text-lg">
+              Straightforward advice for choosing, buying and looking after a car in Kenya — from the BESEKI team in Mombasa.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <a
+                href="https://beseki.com/inventory"
+                className="inline-flex min-h-12 items-center gap-3 bg-primary px-5 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/90"
               >
-                <p className="flex items-center gap-2 font-bold">
-                  {c.slug === "safety-escrow" ? (
-                    <ShieldCheck className="h-4 w-4 text-primary" aria-hidden />
-                  ) : c.slug === "product-updates" ? (
-                    <Radio className="h-4 w-4 text-primary" aria-hidden />
-                  ) : null}
-                  {c.name}
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{c.description}</p>
-              </Link>
-            ))}
+                Browse available cars
+                <MoveUpRight className="h-4 w-4" aria-hidden />
+              </a>
+              <a
+                href="https://beseki.com/contact"
+                className="inline-flex min-h-12 items-center gap-2 px-3 text-sm font-semibold text-background underline-offset-4 hover:underline"
+              >
+                Talk to our team <ArrowRight className="h-4 w-4" aria-hidden />
+              </a>
+            </div>
           </div>
-        </section>
+        </div>
+        <div className="absolute bottom-4 right-5 hidden items-center gap-2 text-xs font-semibold text-background/80 md:flex">
+          <span className="h-px w-7 bg-background/70" />
+          Careful selection. Straight answers.
+        </div>
+      </section>
 
-        {/* Newsletter */}
-        <section className="mt-14 rounded-2xl border border-border bg-card p-6 md:p-10">
-          <div className="mb-6 max-w-2xl">
-            <p className="eyebrow">Newsletter</p>
-            <h2 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">The weekly Hustle Brief</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              One email each week: the best story, one practical guide, and what shipped. We confirm
-              every subscription with a second email before anything else arrives.
+      <section className="border-b border-border bg-background" aria-label="Journal topics">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-7 gap-y-3 px-5 py-5 md:px-10">
+          <span className="eyebrow mr-1">Read by topic</span>
+          {categories.slice(0, 5).map((category) => (
+            <a
+              key={category.slug}
+              href={`https://beseki.com/blog`}
+              className="text-sm font-semibold text-foreground underline-offset-4 hover:text-primary hover:underline"
+            >
+              {category.name}
+            </a>
+          ))}
+          <ArrowDownRight className="ml-auto hidden h-4 w-4 text-primary md:block" aria-hidden />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-14 md:px-10 md:py-20" aria-labelledby="latest-heading">
+        <div className="flex flex-wrap items-end justify-between gap-5 border-b border-border pb-5">
+          <div>
+            <p className="eyebrow text-primary">From the BESEKI team</p>
+            <h2 id="latest-heading" className="beseki-display mt-2 text-4xl font-bold leading-tight md:text-5xl">
+              Read before you ride.
+            </h2>
+          </div>
+          <a
+            href="https://beseki.com/blog"
+            className="inline-flex items-center gap-2 pb-1 text-sm font-bold text-foreground underline-offset-4 hover:text-primary hover:underline"
+          >
+            All articles <ArrowRight className="h-4 w-4" aria-hidden />
+          </a>
+        </div>
+
+        <div className="divide-y divide-border">
+          {featuredReads.map((article) => (
+            <article key={article.number} className="grid gap-3 py-7 md:grid-cols-[5rem_10rem_1fr_auto] md:items-start md:gap-6 md:py-9">
+              <span className="beseki-display text-3xl font-semibold text-primary/80">{article.number}</span>
+              <div>
+                <p className="text-xs font-bold uppercase text-primary">{article.category}</p>
+                <p className="mt-2 text-xs text-muted-foreground">{article.date}</p>
+              </div>
+              <div>
+                <h3 className="max-w-2xl text-xl font-bold leading-snug md:text-2xl">
+                  <a href={article.href} className="underline-offset-4 hover:text-primary hover:underline">
+                    {article.title}
+                  </a>
+                </h3>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{article.excerpt}</p>
+              </div>
+              <a href={article.href} aria-label={`Read: ${article.title}`} className="mt-1 inline-flex h-10 w-10 items-center justify-center border border-border text-foreground transition-colors hover:border-primary hover:text-primary">
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-muted/50" aria-labelledby="visit-heading">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-[1fr_auto] md:items-center md:px-10 md:py-16">
+          <div>
+            <p className="eyebrow text-primary">On the ground in Mombasa</p>
+            <h2 id="visit-heading" className="beseki-display mt-2 text-3xl font-bold md:text-4xl">
+              See the car. Ask anything. Take your time.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Read up, browse our current stock, then visit the BESEKI showroom along Lumumba Road to view a car in person.
             </p>
           </div>
-          <NewsletterForm />
-        </section>
+          <a href="https://beseki.com/inventory" className="inline-flex min-h-12 items-center justify-center gap-3 bg-foreground px-5 text-sm font-bold text-background transition-colors hover:bg-foreground/90">
+            Explore the showroom stock <ArrowRight className="h-4 w-4" aria-hidden />
+          </a>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-6xl px-5 py-8 md:px-10">
+        <p className="flex items-center gap-2 text-xs text-muted-foreground">
+          <BookOpen className="h-4 w-4 text-primary" aria-hidden />
+          Car advice from BESEKI COMPANY LIMITED, Railway Station, Lumumba Road, Mombasa.
+        </p>
       </div>
     </div>
   );

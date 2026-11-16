@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Hustler Journal design system.
+ * BESEKI automotive editorial design system.
  * Tokens are taken verbatim from the brand spec. Do not round or approximate.
  * Fonts are Plus Jakarta Sans only, loaded in __root.tsx.
  */
@@ -49,6 +49,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Plus Jakarta Sans", sans-serif;
 }
 
 :root {
@@ -106,6 +107,10 @@
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.72 0.12 163);
+}
+
+.beseki-display {
+  font-family: "Barlow Condensed", "Plus Jakarta Sans", sans-serif;
 }
 
 @layer base {
