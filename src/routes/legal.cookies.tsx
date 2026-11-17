@@ -26,10 +26,10 @@ export const Route = createFileRoute("/legal/cookies")({
     return { post, related, prev: pn.prev, next: pn.next, origin };
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Unavailable | Hustler Journal" }] };
+    if (!loaderData) return { meta: [{ title: "Unavailable | BESEKI Journal" }] };
     const { post, origin } = loaderData;
     const meta = [
-      { title: `${post.seoTitle ?? post.title} | Hustler Journal` },
+      { title: `${post.seoTitle ?? post.title} | BESEKI Journal` },
       { name: "description", content: post.seoDescription ?? post.excerpt ?? "" },
       { property: "og:title", content: post.title },
       { property: "og:description", content: post.excerpt ?? "" },

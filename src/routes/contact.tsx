@@ -5,15 +5,15 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact | Hustler Journal" },
+      { title: "Contact | BESEKI Journal" },
       {
         name: "description",
-        content: "Reach the Hustler Journal newsroom: corrections, story tips, API keys, and partnership questions.",
+        content: "Reach the BESEKI Journal newsroom: corrections, story tips, API keys, and partnership questions.",
       },
-      { property: "og:title", content: "Contact | Hustler Journal" },
+      { property: "og:title", content: "Contact | BESEKI Journal" },
       {
         property: "og:description",
-        content: "Reach the Hustler Journal newsroom.",
+        content: "Reach the BESEKI Journal newsroom.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -44,7 +44,7 @@ function ContactPage() {
           <h2 className="text-lg font-bold text-primary">Message received</h2>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
             We read everything and reply within five working days. For anything urgent about a live
-            job, use the HustlerLink app so support can see your job chat.
+            job, use the BESEKI app so support can see your job chat.
           </p>
         </div>
       ) : (
@@ -115,7 +115,7 @@ function ContactPage() {
           </button>
           <p className="text-xs leading-relaxed text-muted-foreground">
             This form sends your message to the editorial inbox. For account or payment issues on
-            the platform itself, contact HustlerLink support from the app.
+            the platform itself, contact BESEKI support from the app.
           </p>
         </form>
       )}

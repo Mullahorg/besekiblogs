@@ -14,7 +14,7 @@ export const Route = createFileRoute("/categories/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.category.name ?? "Category"} | Hustler Journal` },
+      { title: `${loaderData?.category.name ?? "Category"} | BESEKI Journal` },
       { name: "description", content: loaderData?.category.description ?? "Articles in this category." },
       { property: "og:title", content: loaderData?.category.name ?? "Category" },
       { property: "og:description", content: loaderData?.category.description ?? "" },

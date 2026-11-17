@@ -78,13 +78,13 @@ export const categories: CategoryMeta[] = [
     slug: "developer-documentation",
     name: "Developer Documentation",
     route: "/developers/docs",
-    description: "Build on the HustlerLink platform with our APIs and tools.",
+    description: "Build on BESEKI with our APIs and tools.",
   },
   {
     slug: "api-documentation",
     name: "API Documentation",
     route: "/developers/api",
-    description: "REST reference for the HustlerLink v1 API.",
+    description: "REST reference for the BESEKI v1 API.",
   },
   {
     slug: "investor-updates",
@@ -96,7 +96,7 @@ export const categories: CategoryMeta[] = [
     slug: "company-announcements",
     name: "Company Announcements",
     route: "/news",
-    description: "Announcements from the HustlerLink team.",
+    description: "Announcements from the BESEKI team.",
   },
   {
     slug: "legal-policies",

@@ -5,10 +5,10 @@ import { SectionIndex, SectionNotFound } from "@/components/content/section-inde
 export const Route = createFileRoute("/stories")({
   head: () => ({
     meta: [
-      { title: "Success Stories | Hustler Journal" },
-      { name: "description", content: "Real hustles from across Kenya. Workers and small businesses share what changed for them." },
-      { property: "og:title", content: "Success Stories | Hustler Journal" },
-      { property: "og:description", content: "Real hustles from across Kenya. Workers and small businesses share what changed for them." },
+      { title: "Vehicle Guides | BESEKI Journal" },
+      { name: "description", content: "Clear explanations of vehicle types, engines, features, and what works on Kenyan roads." },
+      { property: "og:title", content: "Vehicle Guides | BESEKI Journal" },
+      { property: "og:description", content: "Clear explanations of vehicle types, engines, features, and what works on Kenyan roads." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -20,5 +20,5 @@ export const Route = createFileRoute("/stories")({
 
 function IndexComponent() {
   const posts = Route.useLoaderData();
-  return <SectionIndex eyebrow="Hustle Spotlight" title="Success Stories" description="Real hustles from across Kenya. Workers and small businesses share what changed for them." posts={posts} />;
+  return <SectionIndex eyebrow="Vehicle guides" title="Vehicle Guides" description="Clear explanations of vehicle types, engines, features, and what works on Kenyan roads." posts={posts} />;
 }

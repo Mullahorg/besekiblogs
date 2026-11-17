@@ -21,10 +21,10 @@ export const Route = createFileRoute("/search")({
   },
   head: () => ({
     meta: [
-      { title: "Search | Hustler Journal" },
-      { name: "description", content: "Search every article, guide, and story in Hustler Journal." },
-      { property: "og:title", content: "Search | Hustler Journal" },
-      { property: "og:description", content: "Search every article, guide, and story in Hustler Journal." },
+      { title: "Search | BESEKI Journal" },
+      { name: "description", content: "Search every article, guide, and story in BESEKI Journal." },
+      { property: "og:title", content: "Search | BESEKI Journal" },
+      { property: "og:description", content: "Search every article, guide, and story in BESEKI Journal." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -72,7 +72,7 @@ function SearchPage() {
         <div className="mt-10 space-y-8">
           <EmptyState
             title="Nothing matched that search"
-            body="Try a shorter phrase, or browse the sections below. Popular starting points: escrow, pricing, verification."
+            body="Try a shorter phrase, or browse the sections below. Popular starting points: financing, SUVs, maintenance."
           />
           <section aria-labelledby="zero-results-latest">
             <h2 id="zero-results-latest" className="text-xl font-bold tracking-tight">

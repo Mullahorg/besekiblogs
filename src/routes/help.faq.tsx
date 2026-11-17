@@ -12,10 +12,10 @@ export const Route = createFileRoute("/help/faq")({
     }));
     return {
       meta: [
-        { title: "FAQ | Hustler Journal" },
-        { name: "description", content: "Frequently asked questions about HustlerLink, answered plainly." },
-        { property: "og:title", content: "FAQ | Hustler Journal" },
-        { property: "og:description", content: "Frequently asked questions about HustlerLink." },
+        { title: "FAQ | BESEKI Journal" },
+        { name: "description", content: "Frequently asked questions about BESEKI, answered plainly." },
+        { property: "og:title", content: "FAQ | BESEKI Journal" },
+        { property: "og:description", content: "Frequently asked questions about BESEKI." },
         { property: "og:type", content: "website" },
       ],
       scripts:

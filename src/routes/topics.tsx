@@ -5,10 +5,10 @@ import { EmptyState } from "@/components/content/section";
 export const Route = createFileRoute("/topics")({
   head: () => ({
     meta: [
-      { title: "Topics | Hustler Journal" },
+      { title: "Topics | BESEKI Journal" },
       { name: "description", content: "Curated topic clusters: pricing, buying safely, and growing a trade business." },
-      { property: "og:title", content: "Topics | Hustler Journal" },
-      { property: "og:description", content: "Curated topic clusters across the Hustler Journal." },
+      { property: "og:title", content: "Topics | BESEKI Journal" },
+      { property: "og:description", content: "Curated topic clusters across the BESEKI Journal." },
       { property: "og:type", content: "website" },
     ],
   }),

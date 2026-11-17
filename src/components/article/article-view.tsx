@@ -85,7 +85,7 @@ export function ArticleView({
                         {post.author.name}
                       </Link>
                     ) : (
-                      "the Hustler Journal newsroom"
+                      "the BESEKI Journal newsroom"
                     )}
                     <span className="mx-1.5" aria-hidden>.</span>
                     <time dateTime={post.publishedAt ?? undefined}>{formatDate(post.publishedAt ?? "")}</time>

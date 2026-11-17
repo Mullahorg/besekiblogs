@@ -4,15 +4,15 @@ import { BookOpen, Code2, ShieldCheck, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/developers")({
   head: () => ({
     meta: [
-      { title: "Developers | Hustler Journal" },
+      { title: "Developers | BESEKI Journal" },
       {
         name: "description",
-        content: "Documentation, API reference, and tools for building on the HustlerLink platform.",
+        content: "Documentation, API reference, and tools for building on BESEKI.",
       },
-      { property: "og:title", content: "Developers | Hustler Journal" },
+      { property: "og:title", content: "Developers | BESEKI Journal" },
       {
         property: "og:description",
-        content: "Documentation, API reference, and tools for building on the HustlerLink platform.",
+        content: "Documentation, API reference, and tools for building on BESEKI.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -48,9 +48,9 @@ function DevelopersLanding() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 lg:py-14">
       <p className="eyebrow">Developers</p>
-      <h1 className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">Build on HustlerLink</h1>
+      <h1 className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">Build on BESEKI</h1>
       <p className="mt-3 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-        The HustlerLink API gives partners programmatic access to jobs, workers, and businesses.
+        The BESEKI API gives partners programmatic access to jobs, workers, and businesses.
         Everything is documented here first, and the docs ship with the platform.
       </p>
       <div className="mt-10 grid gap-6 md:grid-cols-3">

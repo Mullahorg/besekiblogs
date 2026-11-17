@@ -6,13 +6,13 @@ import { formatDate } from "@/lib/site";
 export const Route = createFileRoute("/updates/release-notes")({
   head: () => ({
     meta: [
-      { title: "Release Notes | Hustler Journal" },
+      { title: "Release Notes | BESEKI Journal" },
       {
         name: "description",
-        content: "A running changelog of everything that shipped on HustlerLink, newest first.",
+        content: "A running changelog of everything that shipped on BESEKI, newest first.",
       },
-      { property: "og:title", content: "Release Notes | Hustler Journal" },
-      { property: "og:description", content: "A running changelog of everything that shipped on HustlerLink." },
+      { property: "og:title", content: "Release Notes | BESEKI Journal" },
+      { property: "og:description", content: "A running changelog of everything that shipped on BESEKI." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -38,7 +38,7 @@ function ReleaseNotes() {
       <p className="eyebrow">Changelog</p>
       <h1 className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">Release notes</h1>
       <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-        Everything that shipped on HustlerLink, newest first. Every entry states what changed and
+        Everything that shipped on BESEKI, newest first. Every entry states what changed and
         what it means for you.
       </p>
       {byMonth.size === 0 ? (

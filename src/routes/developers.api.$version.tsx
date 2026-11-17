@@ -13,8 +13,8 @@ export const Route = createFileRoute("/developers/api/$version")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.title ?? "API"} | Hustler Journal` },
-      { name: "description", content: loaderData?.excerpt ?? "Versioned HustlerLink API documentation." },
+      { title: `${loaderData?.title ?? "API"} | BESEKI Journal` },
+      { name: "description", content: loaderData?.excerpt ?? "Versioned BESEKI API documentation." },
       { property: "og:title", content: loaderData?.title ?? "API" },
       { property: "og:description", content: loaderData?.excerpt ?? "" },
       { property: "og:type", content: "article" },

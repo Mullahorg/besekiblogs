@@ -5,9 +5,9 @@ import { SectionIndex, SectionNotFound } from "@/components/content/section-inde
 export const Route = createFileRoute("/investors")({
   head: () => ({
     meta: [
-      { title: "Investor Updates | Hustler Journal" },
+      { title: "Investor Updates | BESEKI Journal" },
       { name: "description", content: "Numbers, milestones, and plans, shared openly." },
-      { property: "og:title", content: "Investor Updates | Hustler Journal" },
+      { property: "og:title", content: "Investor Updates | BESEKI Journal" },
       { property: "og:description", content: "Numbers, milestones, and plans, shared openly." },
       { property: "og:type", content: "website" },
     ],

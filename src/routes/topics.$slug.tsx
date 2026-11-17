@@ -12,8 +12,8 @@ export const Route = createFileRoute("/topics/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.topic.name ?? "Topic"} | Hustler Journal` },
-      { name: "description", content: loaderData?.topic.description ?? "A curated topic on Hustler Journal." },
+      { title: `${loaderData?.topic.name ?? "Topic"} | BESEKI Journal` },
+      { name: "description", content: loaderData?.topic.description ?? "A curated topic on BESEKI Journal." },
       { property: "og:title", content: loaderData?.topic.name ?? "Topic" },
       { property: "og:description", content: loaderData?.topic.description ?? "" },
       { property: "og:type", content: "website" },

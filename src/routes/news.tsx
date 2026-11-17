@@ -8,15 +8,15 @@ const NEWS_CATEGORIES = ["community-news", "company-announcements"];
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "News | Hustler Journal" },
+      { title: "News | BESEKI Journal" },
       {
         name: "description",
-        content: "Community news and company announcements from HustlerLink, in plain language.",
+        content: "Community news and company announcements from BESEKI, in plain language.",
       },
-      { property: "og:title", content: "News | Hustler Journal" },
+      { property: "og:title", content: "News | BESEKI Journal" },
       {
         property: "og:description",
-        content: "Community news and company announcements from HustlerLink.",
+        content: "Community news and company announcements from BESEKI.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -36,7 +36,7 @@ function NewsIndex() {
     <SectionIndex
       eyebrow="News"
       title="Community and company news"
-      description="Meetups, partnerships, announcements, and news from the HustlerLink community."
+      description="Meetups, partnerships, announcements, and news from the BESEKI community."
       posts={posts}
     />
   );

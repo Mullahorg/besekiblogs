@@ -3,15 +3,15 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/developers/api")({
   head: () => ({
     meta: [
-      { title: "API Reference v1 | Hustler Journal" },
+      { title: "API Reference v1 | BESEKI Journal" },
       {
         name: "description",
-        content: "The HustlerLink REST API reference: endpoints, parameters, pagination, errors, and webhooks.",
+        content: "The BESEKI REST API reference: endpoints, parameters, pagination, errors, and webhooks.",
       },
-      { property: "og:title", content: "API Reference v1 | Hustler Journal" },
+      { property: "og:title", content: "API Reference v1 | BESEKI Journal" },
       {
         property: "og:description",
-        content: "The HustlerLink REST API reference: endpoints, parameters, pagination, errors, and webhooks.",
+        content: "The BESEKI REST API reference: endpoints, parameters, pagination, errors, and webhooks.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -33,7 +33,7 @@ export function ApiReference() {
       <p className="eyebrow">API</p>
       <h1 className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">API reference, v1</h1>
       <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-        The HustlerLink API is a REST API that speaks JSON. Public read endpoints work without a
+        The BESEKI API is a REST API that speaks JSON. Public read endpoints work without a
         key. Write endpoints and higher rate limits need a scoped bearer token.
       </p>
 

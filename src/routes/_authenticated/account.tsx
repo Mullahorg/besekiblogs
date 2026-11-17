@@ -6,10 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/_authenticated/account")({
   head: () => ({
     meta: [
-      { title: "Your account | Hustler Journal" },
-      { name: "description", content: "Manage your Hustler Journal account and sign out." },
-      { property: "og:title", content: "Your account | Hustler Journal" },
-      { property: "og:description", content: "Manage your Hustler Journal account and sign out." },
+      { title: "Your account | BESEKI Journal" },
+      { name: "description", content: "Manage your BESEKI Journal account and sign out." },
+      { property: "og:title", content: "Your account | BESEKI Journal" },
+      { property: "og:description", content: "Manage your BESEKI Journal account and sign out." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
     ],

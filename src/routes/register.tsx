@@ -6,10 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Create account | Hustler Journal" },
-      { name: "description", content: "Create a Hustler Journal account to save articles and manage subscriptions." },
-      { property: "og:title", content: "Create account | Hustler Journal" },
-      { property: "og:description", content: "Create a Hustler Journal account." },
+      { title: "Create account | BESEKI Journal" },
+      { name: "description", content: "Create a BESEKI Journal account to save articles and manage subscriptions." },
+      { property: "og:title", content: "Create account | BESEKI Journal" },
+      { property: "og:description", content: "Create a BESEKI Journal account." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
     ],

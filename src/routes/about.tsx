@@ -3,15 +3,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About | Hustler Journal" },
+      { title: "About | BESEKI Journal" },
       {
         name: "description",
-        content: "Hustler Journal is the editorial home of HustlerLink: guides, stories, safety, and open updates.",
+        content: "BESEKI Journal is the editorial home of BESEKI: car-buying advice, vehicle guides, and maintenance tips.",
       },
-      { property: "og:title", content: "About | Hustler Journal" },
+      { property: "og:title", content: "About | BESEKI Journal" },
       {
         property: "og:description",
-        content: "Hustler Journal is the editorial home of HustlerLink.",
+        content: "BESEKI Journal is the editorial home of BESEKI.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -24,19 +24,19 @@ const TEAM = [
     name: "Amina Wanjiru",
     role: "Senior Editor",
     to: "/authors/amina-wanjiru",
-    bio: "Leads the newsroom. Eight years covering small business and work in East Africa.",
+    bio: "Leads the newsroom. Eight years covering the Kenyan motor industry.",
   },
   {
     name: "David Otieno",
     role: "Staff Writer",
     to: "/authors/david-otieno",
-    bio: "Writes the guides. Trained as an electrical engineer and ran his own repair shop in Kisumu.",
+    bio: "Writes the guides. A trained mechanic who explains engines, servicing and running costs.",
   },
   {
     name: "Grace Mutua",
-    role: "Platform Reporter",
+    role: "Motoring Reporter",
     to: "/authors/grace-mutua",
-    bio: "Covers the platform. Interviews workers and buyers every week so we report what actually happens.",
+    bio: "Reviews new arrivals and talks to car buyers every week.",
   },
 ];
 
@@ -45,29 +45,24 @@ function AboutPage() {
     <div className="mx-auto max-w-3xl px-4 py-10 lg:py-14">
       <p className="eyebrow">About</p>
       <h1 className="mt-1 text-4xl font-extrabold tracking-tight md:text-5xl">
-        The publication of record for the informal economy
+        The car-buying journal from BESEKI COMPANY LIMITED
       </h1>
       <div className="article-body mt-8">
         <p>
-          Hustler Journal is the editorial home of HustlerLink. It exists to teach, document, and
-          build trust: practical guides on trades and pricing, real success stories, honest product
-          updates, and a Help Center that answers questions in plain language.
+          BESEKI Journal is the editorial home of BESEKI. We help drivers in Mombasa and across Kenya choose, finance, and look after the right car, in plain language.
         </p>
         <p>
           We hold ourselves to a few rules. Body text is never small. Fees and terms are stated
-          upfront. Workers are written about as skilled professionals, never as problems to be
-          solved. When we make a mistake, we correct it in public.
+          upfront. When we make a mistake, we correct it in public.
         </p>
         <p>
-          Every article reinforces the HustlerLink mission: creating opportunities, increasing
-          trust, and empowering Africa's informal economy.
+          When you are ready to buy, browse the latest vehicles at beseki.com.
         </p>
         <p>
           Read{" "}
-          <a href="/news/why-we-are-building-hustler-journal">Why we are building Hustler Journal</a>{" "}
-          for the full argument, or{" "}
+          <a href="https://beseki.com">beseki.com</a> to shop vehicles, or{" "}
           <Link to="/contact" className="text-primary underline">
-            pitch the newsroom
+            contact our team
           </Link>{" "}
           with a story we should cover.
         </p>

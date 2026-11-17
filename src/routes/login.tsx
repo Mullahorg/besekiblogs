@@ -6,9 +6,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Sign in | Hustler Journal" },
+      { title: "Sign in | BESEKI Journal" },
       { name: "description", content: "Sign in to save articles and manage your reading." },
-      { property: "og:title", content: "Sign in | Hustler Journal" },
+      { property: "og:title", content: "Sign in | BESEKI Journal" },
       { property: "og:description", content: "Sign in to save articles and manage your reading." },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },

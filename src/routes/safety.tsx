@@ -5,10 +5,10 @@ import { SectionIndex, SectionNotFound } from "@/components/content/section-inde
 export const Route = createFileRoute("/safety")({
   head: () => ({
     meta: [
-      { title: "Safety and Escrow | Hustler Journal" },
-      { name: "description", content: "How escrow works, what to check before you pay, and how to stay safe on every job." },
-      { property: "og:title", content: "Safety and Escrow | Hustler Journal" },
-      { property: "og:description", content: "How escrow works, what to check before you pay, and how to stay safe on every job." },
+      { title: "Maintenance | BESEKI Journal" },
+      { name: "description", content: "Simple maintenance advice to keep your car reliable in Kenya's coastal climate." },
+      { property: "og:title", content: "Maintenance | BESEKI Journal" },
+      { property: "og:description", content: "Simple maintenance advice to keep your car reliable in Kenya's coastal climate." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -20,5 +20,5 @@ export const Route = createFileRoute("/safety")({
 
 function IndexComponent() {
   const posts = Route.useLoaderData();
-  return <SectionIndex eyebrow="Safety" title="Safety and Escrow" description="How escrow works, what to check before you pay, and how to stay safe on every job." posts={posts} />;
+  return <SectionIndex eyebrow="Car care" title="Maintenance" description="Simple maintenance advice to keep your car reliable in Kenya's coastal climate." posts={posts} />;
 }

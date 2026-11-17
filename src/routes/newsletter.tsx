@@ -5,15 +5,15 @@ import { NewsletterForm } from "@/components/newsletter/newsletter-form";
 export const Route = createFileRoute("/newsletter")({
   head: () => ({
     meta: [
-      { title: "Newsletter | Hustler Journal" },
+      { title: "Newsletter | BESEKI Journal" },
       {
         name: "description",
-        content: "Subscribe to the weekly Hustle Brief. Double opt-in, one email a week, unsubscribe anytime.",
+        content: "Subscribe to the weekly BESEKI Drive Brief. Double opt-in, one email a week, unsubscribe anytime.",
       },
-      { property: "og:title", content: "Newsletter | Hustler Journal" },
+      { property: "og:title", content: "Newsletter | BESEKI Journal" },
       {
         property: "og:description",
-        content: "Subscribe to the weekly Hustle Brief from Hustler Journal.",
+        content: "Subscribe to the weekly BESEKI Drive Brief from BESEKI Journal.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -22,12 +22,11 @@ export const Route = createFileRoute("/newsletter")({
 });
 
 const PREFERENCES = [
-  "Success Stories",
-  "Safety and Escrow",
-  "Skills and Business Tips",
-  "Product Updates",
-  "Community News",
-  "Developer Notes",
+  "New arrivals",
+  "Car buying tips",
+  "Vehicle guides",
+  "Maintenance",
+  "BESEKI news",
 ];
 
 function NewsletterPage() {
@@ -36,9 +35,9 @@ function NewsletterPage() {
       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-soft text-primary">
         <MailCheck className="h-6 w-6" aria-hidden />
       </span>
-      <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">The weekly Hustle Brief</h1>
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">The weekly BESEKI Drive Brief</h1>
       <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-        One email each week: the best story, one practical guide, and what shipped on HustlerLink.
+        One email each week: the best story, one practical guide, and what shipped on BESEKI.
       </p>
 
       <div className="mt-8 rounded-2xl border border-border bg-card p-6 md:p-8">

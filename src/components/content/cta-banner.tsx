@@ -5,33 +5,33 @@ type Variant = "worker" | "buyer" | "safety" | "developer" | "newsletter";
 
 const VARIANTS: Record<Variant, { eyebrow: string; title: string; body: string; cta: { label: string; to: string } }> = {
   worker: {
-    eyebrow: "For workers",
-    title: "Get verified. Let buyers find you.",
-    body: "A verified profile with a public rate card means buyers arrive already trusting your work. Verification checks your ID and trade certificates, and it takes about two working days.",
-    cta: { label: "Create your verified profile", to: "https://hustlerlink.com/verify" },
+    eyebrow: "Trade in",
+    title: "Upgrade your car with a fair trade-in.",
+    body: "Bring your current car to BESEKI for an honest valuation and put it toward your next vehicle.",
+    cta: { label: "Value my trade-in", to: "https://beseki.com/trade-in" },
   },
   buyer: {
-    eyebrow: "For buyers",
-    title: "Post the job. Pay through escrow.",
-    body: "Post your job with a clear brief and budget. Verified workers quote, you pick one, and your money sits in escrow until you approve the work.",
-    cta: { label: "Post a job on HustlerLink", to: "https://hustlerlink.com/jobs" },
+    eyebrow: "Ready to buy",
+    title: "Find your next car at BESEKI.",
+    body: "Browse new and locally used vehicles in Mombasa, compare prices, and book a viewing at our showroom.",
+    cta: { label: "Browse vehicles", to: "https://beseki.com/inventory" },
   },
   safety: {
-    eyebrow: "Safety",
-    title: "Every payment protected by escrow.",
-    body: "Money paid on HustlerLink sits in escrow until the work is delivered. If it is not what you agreed, the dispute process sorts it out with the evidence in the job chat.",
-    cta: { label: "See how escrow works", to: "/safety/how-escrow-protects-buyer-and-worker" },
+    eyebrow: "Financing",
+    title: "Drive now, pay over time.",
+    body: "BESEKI helps you arrange car financing with clear terms stated upfront, so you know exactly what you will pay.",
+    cta: { label: "Explore financing", to: "https://beseki.com/financing" },
   },
   developer: {
     eyebrow: "For developers",
-    title: "Build on the HustlerLink API.",
+    title: "Build on the BESEKI API.",
     body: "Query jobs, workers, and businesses over REST. Scoped API keys, cursor pagination, and webhooks for platform events.",
     cta: { label: "Read the API reference", to: "/developers/api" },
   },
   newsletter: {
     eyebrow: "Stay in the loop",
-    title: "The weekly Hustle Brief.",
-    body: "One email each week: the best stories, a practical guide, and what shipped. Double opt-in, one click to leave.",
+    title: "The weekly BESEKI Drive Brief.",
+    body: "One email each week: new arrivals, a practical buying guide, and car care tips. Double opt-in, one click to leave.",
     cta: { label: "Subscribe to the newsletter", to: "/newsletter" },
   },
 };

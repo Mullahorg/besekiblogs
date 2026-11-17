@@ -5,10 +5,10 @@ import { SectionIndex, SectionNotFound } from "@/components/content/section-inde
 export const Route = createFileRoute("/updates")({
   head: () => ({
     meta: [
-      { title: "Product Updates | Hustler Journal" },
-      { name: "description", content: "What shipped on HustlerLink, and what it changes for you." },
-      { property: "og:title", content: "Product Updates | Hustler Journal" },
-      { property: "og:description", content: "What shipped on HustlerLink, and what it changes for you." },
+      { title: "Product Updates | BESEKI Journal" },
+      { name: "description", content: "What shipped on BESEKI, and what it changes for you." },
+      { property: "og:title", content: "Product Updates | BESEKI Journal" },
+      { property: "og:description", content: "What shipped on BESEKI, and what it changes for you." },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -20,5 +20,5 @@ export const Route = createFileRoute("/updates")({
 
 function IndexComponent() {
   const posts = Route.useLoaderData();
-  return <SectionIndex eyebrow="What shipped" title="Product Updates" description="What shipped on HustlerLink, and what it changes for you." posts={posts} />;
+  return <SectionIndex eyebrow="What shipped" title="Product Updates" description="What shipped on BESEKI, and what it changes for you." posts={posts} />;
 }
