@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { listTopics, listSeries } from "@/lib/server/content.functions";
+import { listTopics, listSeries } from "@/lib/api/content.functions";
 import { EmptyState } from "@/components/content/section";
 
 export const Route = createFileRoute("/topics")({
