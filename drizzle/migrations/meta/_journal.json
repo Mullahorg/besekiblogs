@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794913006316,
+      "tag": "0000_seed_car_categories_vehicle_types",
+      "breakpoints": true
+    }
+  ]
 }

@@ -55,7 +55,7 @@ export function SiteFooter() {
               <ul className="space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.to}>
-                    <Link to={l.to} className="text-sm font-medium text-foreground underline-offset-4 hover:underline">
+                    <Link to={l.to} className="text-sm font-medium text-primary underline-offset-4 hover:underline">
                       {l.label}
                     </Link>
                   </li>
@@ -69,7 +69,7 @@ export function SiteFooter() {
           <p className="eyebrow pb-3">On beseki.com</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             {ecosystemNav.map((item) => (
-              <a key={item.to} href={item.to} className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+              <a key={item.to} href={item.to} className="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-primary hover:underline">
                 {item.label}
               </a>
             ))}
@@ -81,9 +81,9 @@ export function SiteFooter() {
             {new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date())} BESEKI COMPANY LIMITED. All rights reserved.
           </p>
           <nav aria-label="Legal" className="flex gap-4">
-            <Link to="/legal/terms" className="text-sm font-medium text-muted-foreground hover:text-foreground">Terms</Link>
-            <Link to="/legal/privacy" className="text-sm font-medium text-muted-foreground hover:text-foreground">Privacy</Link>
-            <Link to="/legal/cookies" className="text-sm font-medium text-muted-foreground hover:text-foreground">Cookies</Link>
+            <Link to="/legal/terms" className="text-sm font-medium text-muted-foreground hover:text-primary">Terms</Link>
+            <Link to="/legal/privacy" className="text-sm font-medium text-muted-foreground hover:text-primary">Privacy</Link>
+            <Link to="/legal/cookies" className="text-sm font-medium text-muted-foreground hover:text-primary">Cookies</Link>
           </nav>
         </div>
       </div>

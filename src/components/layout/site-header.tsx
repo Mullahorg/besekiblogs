@@ -119,7 +119,7 @@ export function SiteHeader() {
                     <a
                       key={item.to}
                       href={item.to}
-                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent-soft hover:text-foreground"
+                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent-soft hover:text-primary"
                     >
                       {item.label}
                     </a>
