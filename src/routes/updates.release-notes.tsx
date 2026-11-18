@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { listPublishedPosts } from "@/lib/server/content.functions";
+import { listPublishedPosts } from "@/lib/api/content.functions";
 import { EmptyState } from "@/components/content/section";
 import { formatDate } from "@/lib/site";
 

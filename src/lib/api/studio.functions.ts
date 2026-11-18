@@ -46,7 +46,7 @@ export const studioGetPost = createServerFn({ method: "GET" })
       .from("posts")
       .select("id,title,slug,subtitle,excerpt,body_markdown,category_id,tag_ids,topic_ids,primary_author_id,cover_image_url,cover_image_alt,featured,editors_pick,status,custom_fields")
       .eq("id", data.id).maybeSingle();
-    return p ? { ...p, custom_fields: (p.custom_fields ?? {}) as Record<string, unknown> } : null;
+    return p ? { ...p, custom_fields: (p.custom_fields ?? {}) as { vehicle?: VehicleSpecs } } : null;
   });
 
 export const studioSavePost = createServerFn({ method: "POST" })
@@ -93,7 +93,7 @@ export const studioSetStatus = createServerFn({ method: "POST" })
   .inputValidator((i: { id: string; status: "draft" | "published" | "archived" }) => i)
   .handler(async ({ data, context }) => {
     if (!(await can(context, data.status === "published" ? PUBLISH : STAFF))) return { ok: false, error: "Not allowed." };
-    const patch: Record<string, unknown> = { status: data.status };
+    const patch: { status: string; published_at?: string } = { status: data.status };
     if (data.status === "published") patch.published_at = new Date().toISOString();
     const { error } = await context.supabase.from("posts").update(patch).eq("id", data.id);
     return error ? { ok: false, error: error.message } : { ok: true };
@@ -106,8 +106,8 @@ export const studioSaveTaxonomy = createServerFn({ method: "POST" })
     const slug = slugify(data.name);
     if (!slug) return { ok: false, error: "Enter a name." };
     const row: Record<string, unknown> = { name: data.name.trim(), slug };
-    if (data.kind !== "tags") row.description = data.description || null;
-    if (data.kind === "categories") row.color_token = "primary";
+    if (data.kind !== "tags") row["description"] = data.description || null;
+    if (data.kind === "categories") row["color_token"] = "primary";
     const { error } = await context.supabase.from(data.kind).insert(row as never);
     return error ? { ok: false, error: error.message } : { ok: true };
   });

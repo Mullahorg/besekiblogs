@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { getTopicBySlug, listPostsByTopic } from "@/lib/server/content.functions";
+import { getTopicBySlug, listPostsByTopic } from "@/lib/api/content.functions";
 import { ArticleCardTyped } from "@/components/content/article-card";
 import { EmptyState } from "@/components/content/section";
 

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import { searchPosts, listPublishedPosts } from "@/lib/server/content.functions";
+import { searchPosts, listPublishedPosts } from "@/lib/api/content.functions";
 import { ArticleCardTyped } from "@/components/content/article-card";
 import { EmptyState } from "@/components/content/section";
 import { categories } from "@/lib/site";

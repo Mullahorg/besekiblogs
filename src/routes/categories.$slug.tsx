@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { listPublishedPosts } from "@/lib/server/content.functions";
+import { listPublishedPosts } from "@/lib/api/content.functions";
 import { SectionIndex } from "@/components/content/section-index";
 import { EmptyState } from "@/components/content/section";
 import { categoryBySlug } from "@/lib/site";

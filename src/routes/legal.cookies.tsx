@@ -4,8 +4,8 @@ import {
   getRelatedPosts,
   getPrevNextPosts,
   recordPostView,
-} from "@/lib/server/content.functions";
-import { getRequestOrigin } from "@/lib/server/origin.functions";
+} from "@/lib/api/content.functions";
+import { getRequestOrigin } from "@/lib/api/origin.functions";
 import { ArticleView } from "@/components/article/article-view";
 import { SectionNotFound } from "@/components/content/section-index";
 

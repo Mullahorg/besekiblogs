@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { getPostBySlug } from "@/lib/server/content.functions";
+import { getPostBySlug } from "@/lib/api/content.functions";
 import { ArticleView } from "@/components/article/article-view";
 import { SectionNotFound } from "@/components/content/section-index";
 

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { listPublishedPosts } from "@/lib/server/content.functions";
+import { listPublishedPosts } from "@/lib/api/content.functions";
 import { SectionIndex, SectionNotFound } from "@/components/content/section-index";
 
 export const Route = createFileRoute("/stories")({

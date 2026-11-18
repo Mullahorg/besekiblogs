@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { subscribeNewsletter } from "@/lib/server/content.functions";
+import { subscribeNewsletter } from "@/lib/api/content.functions";
 import { Loader2 } from "lucide-react";
 
 export function NewsletterForm({ compact = false }: { compact?: boolean }) {

@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { toggleBookmark, getBookmarkState } from "@/lib/server/account.functions";
+import { toggleBookmark, getBookmarkState } from "@/lib/api/account.functions";
 
 export function BookmarkButton({ slug }: { slug: string }) {
   const [bookmarked, setBookmarked] = useState(false);
