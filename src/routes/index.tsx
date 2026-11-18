@@ -1,36 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, BookOpen, MapPin, MoveUpRight } from "lucide-react";
 import { categories } from "@/lib/site";
+import { listPublishedPosts } from "@/lib/api/content.functions";
+import { cardRoute } from "@/components/content/article-card";
 
-const featuredReads = [
-  {
-    category: "Car buying tips",
-    title: "What to check before buying a locally used car",
-    excerpt:
-      "A practical checklist for the forecourt — from logbook details to the things worth listening for on a test drive.",
-    date: "18 June 2026",
-    href: "https://beseki.com/blog/what-to-check-before-buying-a-locally-used-car",
-    number: "01",
-  },
-  {
-    category: "Vehicle guides",
-    title: "Petrol, diesel or hybrid: what makes sense on Kenyan roads",
-    excerpt:
-      "Fuel type affects running costs more than most buyers expect. Compare the options for everyday Kenyan driving.",
-    date: "30 May 2026",
-    href: "https://beseki.com/blog/petrol-diesel-or-hybrid-for-kenyan-roads",
-    number: "02",
-  },
-  {
-    category: "Maintenance",
-    title: "Keeping your car healthy in coastal humidity",
-    excerpt:
-      "A few simple habits can help protect your car from the salt air and humidity around Mombasa.",
-    date: "12 May 2026",
-    href: "https://beseki.com/blog/keeping-your-car-healthy-in-coastal-humidity",
-    number: "03",
-  },
-];
 
 const heroImage =
   "/__l5e/assets-v1/1348cb8e-1d33-4c56-be14-43ed22ab6ebc/beseki-alphand-hero.jpg";
@@ -54,10 +27,19 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  loader: () => listPublishedPosts({ data: { limit: 6 } }),
   component: HomePage,
 });
 
 function HomePage() {
+  const featuredReads = Route.useLoaderData().map((p, i) => ({
+    category: p.categoryName ?? "Article",
+    title: p.title,
+    excerpt: p.excerpt ?? "",
+    date: p.publishedAt ? new Date(p.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "",
+    href: cardRoute(p).replace("$slug", p.slug),
+    number: String(i + 1).padStart(2, "0"),
+  }));
   return (
     <div>
       <div className="border-b border-border bg-muted/50">
