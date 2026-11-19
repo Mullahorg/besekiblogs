@@ -8,6 +8,13 @@
       "when": 1794913006316,
       "tag": "0000_seed_car_categories_vehicle_types",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795093674750,
+      "tag": "0001_tighten_settings_newsletter_policies",
+      "breakpoints": true
     }
   ]
 }
