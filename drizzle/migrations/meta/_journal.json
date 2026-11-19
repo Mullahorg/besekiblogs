@@ -15,6 +15,13 @@
       "when": 1795093674750,
       "tag": "0001_tighten_settings_newsletter_policies",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795093808600,
+      "tag": "0002_journal_media_policies",
+      "breakpoints": true
     }
   ]
 }

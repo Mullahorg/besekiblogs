@@ -30,6 +30,7 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as UpdatesRouteImport } from './routes/updates'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
+import { Route as AuthenticatedStudioRouteImport } from './routes/_authenticated/studio'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
 import { Route as DevelopersApiRouteImport } from './routes/developers.api'
@@ -49,6 +50,7 @@ import { Route as StoriesSlugRouteImport } from './routes/stories.$slug'
 import { Route as TopicsSlugRouteImport } from './routes/topics.$slug'
 import { Route as UpdatesSlugRouteImport } from './routes/updates.$slug'
 import { Route as UpdatesReleaseNotesRouteImport } from './routes/updates.release-notes'
+import { Route as AuthenticatedStudioWriteRouteImport } from './routes/_authenticated/studio_.write'
 import { Route as DevelopersApiVersionRouteImport } from './routes/developers.api.$version'
 import { Route as DevelopersDocsSlugRouteImport } from './routes/developers.docs.$slug'
 
@@ -156,6 +158,11 @@ const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
   path: '/account',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedStudioRoute = AuthenticatedStudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthorsSlugRoute = AuthorsSlugRouteImport.update({
   id: '/authors/$slug',
   path: '/authors/$slug',
@@ -251,6 +258,12 @@ const UpdatesReleaseNotesRoute = UpdatesReleaseNotesRouteImport.update({
   path: '/release-notes',
   getParentRoute: () => UpdatesRoute,
 } as any)
+const AuthenticatedStudioWriteRoute =
+  AuthenticatedStudioWriteRouteImport.update({
+    id: '/studio_/write',
+    path: '/studio/write',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const DevelopersApiVersionRoute = DevelopersApiVersionRouteImport.update({
   id: '/$version',
   path: '/$version',
@@ -283,6 +296,7 @@ export interface FileRoutesByFullPath {
   '/topics': typeof TopicsRouteWithChildren
   '/updates': typeof UpdatesRouteWithChildren
   '/account': typeof AuthenticatedAccountRoute
+  '/studio': typeof AuthenticatedStudioRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/developers/api': typeof DevelopersApiRouteWithChildren
@@ -302,6 +316,7 @@ export interface FileRoutesByFullPath {
   '/topics/$slug': typeof TopicsSlugRoute
   '/updates/$slug': typeof UpdatesSlugRoute
   '/updates/release-notes': typeof UpdatesReleaseNotesRoute
+  '/studio/write': typeof AuthenticatedStudioWriteRoute
   '/developers/api/$version': typeof DevelopersApiVersionRoute
   '/developers/docs/$slug': typeof DevelopersDocsSlugRoute
 }
@@ -326,6 +341,7 @@ export interface FileRoutesByTo {
   '/topics': typeof TopicsRouteWithChildren
   '/updates': typeof UpdatesRouteWithChildren
   '/account': typeof AuthenticatedAccountRoute
+  '/studio': typeof AuthenticatedStudioRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/developers/api': typeof DevelopersApiRouteWithChildren
@@ -345,6 +361,7 @@ export interface FileRoutesByTo {
   '/topics/$slug': typeof TopicsSlugRoute
   '/updates/$slug': typeof UpdatesSlugRoute
   '/updates/release-notes': typeof UpdatesReleaseNotesRoute
+  '/studio/write': typeof AuthenticatedStudioWriteRoute
   '/developers/api/$version': typeof DevelopersApiVersionRoute
   '/developers/docs/$slug': typeof DevelopersDocsSlugRoute
 }
@@ -371,6 +388,7 @@ export interface FileRoutesById {
   '/topics': typeof TopicsRouteWithChildren
   '/updates': typeof UpdatesRouteWithChildren
   '/_authenticated/account': typeof AuthenticatedAccountRoute
+  '/_authenticated/studio': typeof AuthenticatedStudioRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
   '/developers/api': typeof DevelopersApiRouteWithChildren
@@ -390,6 +408,7 @@ export interface FileRoutesById {
   '/topics/$slug': typeof TopicsSlugRoute
   '/updates/$slug': typeof UpdatesSlugRoute
   '/updates/release-notes': typeof UpdatesReleaseNotesRoute
+  '/_authenticated/studio_/write': typeof AuthenticatedStudioWriteRoute
   '/developers/api/$version': typeof DevelopersApiVersionRoute
   '/developers/docs/$slug': typeof DevelopersDocsSlugRoute
 }
@@ -416,6 +435,7 @@ export interface FileRouteTypes {
     | '/topics'
     | '/updates'
     | '/account'
+    | '/studio'
     | '/authors/$slug'
     | '/categories/$slug'
     | '/developers/api'
@@ -435,6 +455,7 @@ export interface FileRouteTypes {
     | '/topics/$slug'
     | '/updates/$slug'
     | '/updates/release-notes'
+    | '/studio/write'
     | '/developers/api/$version'
     | '/developers/docs/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -459,6 +480,7 @@ export interface FileRouteTypes {
     | '/topics'
     | '/updates'
     | '/account'
+    | '/studio'
     | '/authors/$slug'
     | '/categories/$slug'
     | '/developers/api'
@@ -478,6 +500,7 @@ export interface FileRouteTypes {
     | '/topics/$slug'
     | '/updates/$slug'
     | '/updates/release-notes'
+    | '/studio/write'
     | '/developers/api/$version'
     | '/developers/docs/$slug'
   id:
@@ -503,6 +526,7 @@ export interface FileRouteTypes {
     | '/topics'
     | '/updates'
     | '/_authenticated/account'
+    | '/_authenticated/studio'
     | '/authors/$slug'
     | '/categories/$slug'
     | '/developers/api'
@@ -522,6 +546,7 @@ export interface FileRouteTypes {
     | '/topics/$slug'
     | '/updates/$slug'
     | '/updates/release-notes'
+    | '/_authenticated/studio_/write'
     | '/developers/api/$version'
     | '/developers/docs/$slug'
   fileRoutesById: FileRoutesById
@@ -701,6 +726,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAccountRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/studio': {
+      id: '/_authenticated/studio'
+      path: '/studio'
+      fullPath: '/studio'
+      preLoaderRoute: typeof AuthenticatedStudioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/authors/$slug': {
       id: '/authors/$slug'
       path: '/authors/$slug'
@@ -834,6 +866,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UpdatesReleaseNotesRouteImport
       parentRoute: typeof UpdatesRoute
     }
+    '/_authenticated/studio_/write': {
+      id: '/_authenticated/studio_/write'
+      path: '/studio/write'
+      fullPath: '/studio/write'
+      preLoaderRoute: typeof AuthenticatedStudioWriteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/developers/api/$version': {
       id: '/developers/api/$version'
       path: '/$version'
@@ -853,10 +892,14 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
+  AuthenticatedStudioRoute: typeof AuthenticatedStudioRoute
+  AuthenticatedStudioWriteRoute: typeof AuthenticatedStudioWriteRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAccountRoute: AuthenticatedAccountRoute,
+  AuthenticatedStudioRoute: AuthenticatedStudioRoute,
+  AuthenticatedStudioWriteRoute: AuthenticatedStudioWriteRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

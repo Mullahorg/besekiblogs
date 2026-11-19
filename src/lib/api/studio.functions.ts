@@ -27,7 +27,7 @@ export const studioBootstrap = createServerFn({ method: "GET" })
       context.supabase.from("tags").select("id,name,slug").is("deleted_at", null).order("name"),
       context.supabase.from("topics").select("id,name,slug").is("deleted_at", null).order("sort_order"),
       context.supabase.from("authors").select("id,name,slug,role_title,bio,avatar_url").is("deleted_at", null).order("name"),
-      context.supabase.from("posts").select("id,title,slug,status,updated_at,category_id").is("deleted_at", null).order("updated_at", { ascending: false }).limit(200),
+      context.supabase.from("posts").select("id,type,title,slug,status,updated_at,category_id").is("deleted_at", null).order("updated_at", { ascending: false }).limit(200),
     ]);
     return {
       forbidden: false as const,
@@ -44,7 +44,7 @@ export const studioGetPost = createServerFn({ method: "GET" })
   .handler(async ({ data, context }) => {
     const { data: p } = await context.supabase
       .from("posts")
-      .select("id,title,slug,subtitle,excerpt,body_markdown,category_id,tag_ids,topic_ids,primary_author_id,cover_image_url,cover_image_alt,featured,editors_pick,status,custom_fields")
+      .select("id,type,title,slug,subtitle,excerpt,body_markdown,category_id,tag_ids,topic_ids,primary_author_id,cover_image_url,cover_image_alt,featured,editors_pick,status,custom_fields")
       .eq("id", data.id).maybeSingle();
     return p ? { ...p, custom_fields: (p.custom_fields ?? {}) as { vehicle?: VehicleSpecs } } : null;
   });
@@ -52,7 +52,7 @@ export const studioGetPost = createServerFn({ method: "GET" })
 export const studioSavePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((i: {
-    id?: string; title: string; slug: string; subtitle?: string; excerpt?: string; body: string;
+    id?: string; type?: string; title: string; slug: string; subtitle?: string; excerpt?: string; body: string;
     categoryId: string | null; tagIds: string[]; topicIds: string[]; authorId: string | null;
     coverUrl?: string; coverAlt?: string; featured: boolean; vehicle: VehicleSpecs; publish: boolean;
   }) => i)
@@ -60,8 +60,9 @@ export const studioSavePost = createServerFn({ method: "POST" })
     if (!(await can(context, STAFF))) return { ok: false, error: "You do not have permission to write posts." };
     if (!data.title.trim() || !data.slug.trim()) return { ok: false, error: "Title and web address are required." };
     if (data.publish && !(await can(context, PUBLISH))) return { ok: false, error: "Only publishers and admins can publish." };
+    const type = ["story","guide","safety","news"].includes(data.type ?? "") ? data.type! : "story";
     const row = {
-      title: data.title.trim(), slug: data.slug.trim(),
+      type, title: data.title.trim(), slug: data.slug.trim(),
       subtitle: data.subtitle?.trim() || null, excerpt: data.excerpt?.trim() || null,
       body_markdown: data.body, body_rendered: renderMarkdown(data.body),
       reading_time_minutes: estimateReadingMinutes(data.body),
