@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  const featuredReads = Route.useLoaderData().map((p, i) => ({
+  const featuredReads = (Route.useLoaderData() ?? []).map((p, i) => ({
     category: p.categoryName ?? "Article",
     title: p.title,
     excerpt: p.excerpt ?? "",
